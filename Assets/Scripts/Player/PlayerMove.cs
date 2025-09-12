@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public float PlayerSpeed = 20f;
+    public float PlayerSpeed = 10f;
+    public float momentunDamping = 5f;
+
     private CharacterController myCC;
     public Animator camAnim;
     private bool isWalking;
@@ -20,16 +22,28 @@ public class PlayerMove : MonoBehaviour
     {
         GetInput();
         MovePlayer();
-        CheckForHeadBob();
 
         camAnim.SetBool("isWalking", isWalking);
     }
 
     private void GetInput()
     {
-        inputVector = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")); // Get input
-        inputVector.Normalize(); // To prevent faster diagonal movement
-        inputVector = transform.TransformDirection(inputVector); // Convert local to global direction
+        if (Input.GetKey(KeyCode.W) ||
+            Input.GetKey(KeyCode.A) ||
+            Input.GetKey(KeyCode.S) ||
+            Input.GetKey(KeyCode.D))
+        { 
+            inputVector = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")); // Get input
+            inputVector.Normalize(); // To prevent faster diagonal movement
+            inputVector = transform.TransformDirection(inputVector); // Convert local to global direction
+
+            isWalking = true;
+        }
+        else
+        {
+            inputVector = Vector3.Lerp(inputVector, Vector3.zero, momentunDamping * Time.deltaTime); // Apply momentum damping
+            isWalking = false;
+        }
 
         movementVector = (inputVector * PlayerSpeed) + (Vector3.up * myGravity); // Combine movement and gravity
     }
@@ -37,18 +51,5 @@ public class PlayerMove : MonoBehaviour
     private void MovePlayer()
     {
         myCC.Move(movementVector * Time.deltaTime); // Move the player
-    }
-
-    void CheckForHeadBob()
-    {
-        if (myCC.velocity.magnitude > 0.1f)
-        {
-            isWalking = true;
-        }
-        else
-        {
-            isWalking = false;
-        }
-
     }
 }
