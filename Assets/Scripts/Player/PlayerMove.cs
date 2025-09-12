@@ -4,6 +4,8 @@ public class PlayerMove : MonoBehaviour
 {
     public float PlayerSpeed = 20f;
     private CharacterController myCC;
+    public Animator camAnim;
+    private bool isWalking;
 
     private Vector3 inputVector;
     private Vector3 movementVector;
@@ -18,11 +20,14 @@ public class PlayerMove : MonoBehaviour
     {
         GetInput();
         MovePlayer();
+        CheckForHeadBob();
+
+        camAnim.SetBool("isWalking", isWalking);
     }
 
     private void GetInput()
     {
-        inputVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")); // Get input
+        inputVector = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")); // Get input
         inputVector.Normalize(); // To prevent faster diagonal movement
         inputVector = transform.TransformDirection(inputVector); // Convert local to global direction
 
@@ -32,5 +37,18 @@ public class PlayerMove : MonoBehaviour
     private void MovePlayer()
     {
         myCC.Move(movementVector * Time.deltaTime); // Move the player
+    }
+
+    void CheckForHeadBob()
+    {
+        if (myCC.velocity.magnitude > 0.1f)
+        {
+            isWalking = true;
+        }
+        else
+        {
+            isWalking = false;
+        }
+
     }
 }
