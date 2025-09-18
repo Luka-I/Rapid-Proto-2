@@ -41,6 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Infinity
+    uniqueID: 4044413263
+    locked: 0
+  - name: Player Icon
+    uniqueID: 735460257
+    locked: 0
+  - name: Weapon
+    uniqueID: 1521611325
+    locked: 0
+  - name: UI Background
+    uniqueID: 2601821401
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1
