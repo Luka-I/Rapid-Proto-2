@@ -1,4 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gun : MonoBehaviour
 {
@@ -13,6 +16,12 @@ public class Gun : MonoBehaviour
 
     public LayerMask raycastLayerMask;
     public EnemyManager enemyManager;
+
+    [Header("Muzzle flash UI")]
+    public Image muzzleFlash;
+
+    [Header("Muzzle flash Sprite")]
+    public Sprite muzzleFlashSprite;
 
     void Start()
     {
@@ -34,6 +43,14 @@ public class Gun : MonoBehaviour
         GetComponent<AudioSource>().Stop();
         GetComponent<AudioSource>().Play();
 
+        // Activate muzzle flash
+        if (muzzleFlash != null)
+        {
+            muzzleFlash.sprite = muzzleFlashSprite;
+            muzzleFlash.enabled = true;
+            StartCoroutine(DisableMuzzleFlash());
+        }
+
         foreach (var enemy in enemyManager.enemiesInTrigger)
         {
             var dir = enemy.transform.position - transform.position;
@@ -48,6 +65,13 @@ public class Gun : MonoBehaviour
                 }
                 
             }            
+        }
+
+        // Coroutine to disable muzzle flash after a short time
+        IEnumerator DisableMuzzleFlash()
+        {
+            yield return new WaitForSeconds(0.05f); // Flash duration - adjust as needed
+            muzzleFlash.enabled = false;
         }
 
         nextTimeToFire = Time.time + fireRate;

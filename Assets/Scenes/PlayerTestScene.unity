@@ -155,6 +155,17 @@ Transform:
   - {fileID: 340255588}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &136681468 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1546265302276929891, guid: d118c0dce303dbd459a939d5385d6e87, type: 3}
+  m_PrefabInstance: {fileID: 1516018032202889490}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &340255587
 GameObject:
   m_ObjectHideFlags: 0
@@ -1379,6 +1390,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6730912011762808026, guid: d5629e55e6de0634a9f5fa395109270b, type: 3}
+      propertyPath: muzzleFlash
+      value: 
+      objectReference: {fileID: 136681468}
     - target: {fileID: 6730912011762808026, guid: d5629e55e6de0634a9f5fa395109270b, type: 3}
       propertyPath: enemyManager
       value: 
