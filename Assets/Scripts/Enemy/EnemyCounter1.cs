@@ -1,27 +1,37 @@
 using UnityEngine;
-using TMPro; // add this for TextMeshPro
+using TMPro;
 
 public class EnemyCounter : MonoBehaviour
 {
-    public int totalEnemies = 30;   // total enemies required
-    private int remainingEnemies;   // how many are left
-    public TextMeshProUGUI counterText; // TMP instead of UI.Text
+    [Header("Enemy Settings")]
+    public GameObject enemyPrefab;       // The enemy prefab to track
+    public int totalEnemies;             // Will be set automatically if left 0
+
+    [Header("UI")]
+    public TextMeshProUGUI counterText;
+
+    private int remainingEnemies;
 
     void Start()
     {
+        // Count all enemies of this prefab currently in the scene
+        if (totalEnemies == 0 && enemyPrefab != null)
+        {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyPrefab.tag);
+            totalEnemies = enemies.Length;
+        }
+
         remainingEnemies = totalEnemies;
         UpdateCounterUI();
     }
 
-    // Call this whenever an enemy dies
     public void EnemyKilled()
     {
-        remainingEnemies--;
-
-        if (remainingEnemies < 0)
-            remainingEnemies = 0;
-
-        UpdateCounterUI();
+        if (remainingEnemies > 0)
+        {
+            remainingEnemies--;
+            UpdateCounterUI();
+        }
     }
 
     void UpdateCounterUI()
