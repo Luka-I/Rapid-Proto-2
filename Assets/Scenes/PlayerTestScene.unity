@@ -155,6 +155,17 @@ Transform:
   - {fileID: 340255588}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &136681468 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1546265302276929891, guid: d118c0dce303dbd459a939d5385d6e87, type: 3}
+  m_PrefabInstance: {fileID: 1516018032202889490}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &340255587
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,9 +1391,21 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6730912011762808026, guid: d5629e55e6de0634a9f5fa395109270b, type: 3}
+      propertyPath: muzzleFlash
+      value: 
+      objectReference: {fileID: 136681468}
+    - target: {fileID: 6730912011762808026, guid: d5629e55e6de0634a9f5fa395109270b, type: 3}
       propertyPath: enemyManager
       value: 
       objectReference: {fileID: 1350403811}
+    - target: {fileID: 6730912011762808026, guid: d5629e55e6de0634a9f5fa395109270b, type: 3}
+      propertyPath: muzzleFlashSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: eb5dd2e52a563aa428c40e4b1083fb68, type: 3}
+    - target: {fileID: 7893174784008454157, guid: d5629e55e6de0634a9f5fa395109270b, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 3c7b5eec5aa590e4aa531bde46099f8d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1396,6 +1419,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5247770648367907191, guid: d118c0dce303dbd459a939d5385d6e87, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6814992596372965313, guid: d118c0dce303dbd459a939d5385d6e87, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1479,6 +1506,18 @@ PrefabInstance:
     - target: {fileID: 6888106416525178494, guid: d118c0dce303dbd459a939d5385d6e87, type: 3}
       propertyPath: m_Name
       value: PlayerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8902386804069814019, guid: d118c0dce303dbd459a939d5385d6e87, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8902386804069814019, guid: d118c0dce303dbd459a939d5385d6e87, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8902386804069814019, guid: d118c0dce303dbd459a939d5385d6e87, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
